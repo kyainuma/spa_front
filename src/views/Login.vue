@@ -37,6 +37,7 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
 import { login } from '@/api/auth'
+import router from '@/router'
 
 export default defineComponent({
   name: 'Home',
@@ -52,7 +53,7 @@ export default defineComponent({
         await login(formData.email, formData.password)
           .then((res) => {
             if (res?.status === 200) {
-              console.log(res)
+              router.push('/posts')
             } else {
               alert('メールアドレスかパスワードが間違っています。')
             }
